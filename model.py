@@ -7,16 +7,8 @@ Created on Tue Mar 31 15:39:54 2020
 """
 
 
-from sklearn.linear_model import SGDClassifier
-
-
-#from sklearn.linear_model import LogisticRegression
-#from sklearn import utils
-
-import os
-data_dir = '/media/mynewdrive/rob/'
-os.chdir(data_dir)
-
+from sklearn.linear_model import SGDClassifier, LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
 
 
 #%% SGD
@@ -27,9 +19,24 @@ def sgd(tol, alr):
                         learning_rate='optimal', alpha=alr)
     return clf
 
-#%% Random Forest
-def rf():
-    return
+
+#%% Logistic Regression
+def lreg(c):
+    clf = LogisticRegression(penalty='l2', class_weight='balanced', n_jobs=4,
+                             tol=1e-4, dual=False,  # Prefer dual=False when n_samples > n_features.                            
+                             C=c,  # smaller value specify stronger regularization
+                             random_state=1234, max_iter=1000,
+                             solver='lbfgs')
+
+#    clf = LogisticRegression(n_jobs=1, C=1e4, max_iter=1000)
+    return clf
+
+
+#%% Random Forest Classifier
+def rf(n_tree, n_feature):
+    clf = RandomForestClassifier(n_estimators=n_tree, max_features=n_feature, class_weight='balanced', 
+                                 max_depth=2, random_state=1234)
+    return clf
 
 #%% Extreme Gradient Boosting
 def xgboost():
