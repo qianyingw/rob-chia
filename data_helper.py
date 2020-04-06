@@ -10,7 +10,6 @@ import pickle
 import pandas as pd
 
 import os
-os.chdir('/media/mynewdrive/rob/')
 
 from gensim.models.doc2vec import TaggedDocument
 
@@ -21,7 +20,7 @@ from gensim.models.doc2vec import TaggedDocument
 
 #%% Read text from each df row (for bow/avg_w2v) 
 def read_text(row):
-    pkl_path = os.path.join('data/rob_str', row['goldID']+'.pkl') 
+    pkl_path = os.path.join('/media/mynewdrive/rob/data/rob_str', row['goldID']+'.pkl') 
     with open(pkl_path, 'rb') as fin:
         sent_ls = pickle.load(fin)        
     text = ''
@@ -32,7 +31,7 @@ def read_text(row):
 
 #%% Read tokens from each df row (for d2v) 
 def read_token(row):
-    pkl_path = os.path.join('data/rob_str', row['goldID']+'.pkl') 
+    pkl_path = os.path.join('/media/mynewdrive/rob/data/rob_str', row['goldID']+'.pkl') 
     with open(pkl_path, 'rb') as fin:
         sent_ls = pickle.load(fin)        
     tokens = []
