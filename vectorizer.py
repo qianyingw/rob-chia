@@ -77,3 +77,18 @@ def d2v(train_tagged, valid_tagged, d2v_model, d2v_alpha, d2v_min_alpha, vector_
     
     return X_train_vec, Y_train, X_valid_vec, Y_valid
 
+###
+#    p = {'alpha': 0.001,
+#  'd2v_alpha': 0.01,
+#  'd2v_min_alpha': 0.001,
+#  'd2v_model': 'dbow',
+#  'max_vocab_size': 5000,
+#  'min_count': 10,
+#  'tol': 0.001,
+#  'vector_size': 300}
+#
+#
+#d2v_alpha = 0.01; d2v_min_alpha = 0.001; vector_size = 300; min_count=10;max_vocab_size=5000
+#train_tagged = X_train; valid_tagged = X_valid
+#
+#X_train_vec, X_valid_vec = d2v(X_train, X_valid, 'dm', 0.01, 0.001, 300, 10, 5000)
