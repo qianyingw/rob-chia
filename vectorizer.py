@@ -78,10 +78,10 @@ def d2v(train_tagged, valid_tagged, d2v_model, d2v_alpha, d2v_min_alpha, vector_
     else:
         # Train DM
         model_dm.build_vocab(train_tagged)
-        model_dm.train(train_tagged, total_examples=len(train_tagged.values), epochs=model.epochs)
+        model_dm.train(train_tagged, total_examples=len(train_tagged.values), epochs=model_dm.epochs)
         # Train DBOW
         model_dbow.build_vocab(train_tagged)
-        model_dbow.train(train_tagged, total_examples=len(train_tagged.values), epochs=model.epochs)
+        model_dbow.train(train_tagged, total_examples=len(train_tagged.values), epochs=model_dbow.epochs)
         # Delete temporary training data to free up RAM
         model_dbow.delete_temporary_training_data(keep_doctags_vectors=True, keep_inference=True)
         model_dm.delete_temporary_training_data(keep_doctags_vectors=True, keep_inference=True)
