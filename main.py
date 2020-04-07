@@ -36,8 +36,10 @@ def train(clf, p_dict, X_train_vec, Y_train, X_valid_vec, Y_valid):
                     'rec': recall_score(y_true, y_pred),
                     'prec': precision_score(y_true, y_pred),
                     'spec': tn / (tn+fp)} 
-        if clf.n_iter_:
+        try: 
             p_dict['m_iter'] = clf.n_iter_
+        except:
+            print('No n_iter_')
         p_dict.update(res_dict)  # Add score dict to pars dict
     except:
         p_dict.update({'m_iter': '', 'acc': '', 'f1': '', 'rec': '', 'prec': '', 'spec': ''})  # Add score dict to pars dict    
