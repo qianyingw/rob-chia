@@ -49,21 +49,21 @@ def avg_w2v(w2v, X_train, X_valid, min_df, max_f):
 def d2v(train_tagged, valid_tagged, d2v_model, d2v_alpha, d2v_min_alpha, vector_size, min_count, max_vocab_size):
     
     model_dm = Doc2Vec(dm=1,  # 1: PV-DM. 0: PV-DBOW
-                        dm_mean=1,  # 0: use the sum of the context word vectors. 1: use the mean
-                        epochs=20, seed=1234, workers=1,
-                        alpha=d2v_alpha, min_alpha=d2v_min_alpha,  # initial learning rate; linearly drops to min_alpha as training progresses                   
-                        vector_size=vector_size,  # feature vector dim
-                        min_count=min_count, max_vocab_size=max_vocab_size,
-                        hs=0,  # 1: hierarchical softmax is used
-                        negative=5)  # use negative sampling - how many “noise words” should be drawn
+                       dm_mean=1,  # 0: use the sum of the context word vectors. 1: use the mean
+                       epochs=20, seed=1234, workers=1,
+                       alpha=d2v_alpha, min_alpha=d2v_min_alpha,  # initial learning rate; linearly drops to min_alpha as training progresses                   
+                       vector_size=vector_size,  # feature vector dim
+                       min_count=min_count, max_vocab_size=max_vocab_size,
+                       hs=0,  # 1: hierarchical softmax is used
+                       negative=5)  # use negative sampling - how many “noise words” should be drawn
     
     model_dbow = Doc2Vec(dm=0,  # 1: PV-DM. 0: PV-DBOW
-                        epochs=20, seed=1234, workers=1,
-                        alpha=d2v_alpha, min_alpha=d2v_min_alpha,  # initial learning rate; linearly drops to min_alpha as training progresses                   
-                        vector_size=vector_size,  # feature vector dim
-                        min_count=min_count, max_vocab_size=max_vocab_size,
-                        hs=0,  # 1: hierarchical softmax is used
-                        negative=5)  # use negative sampling - how many “noise words” should be drawn
+                         epochs=20, seed=1234, workers=1,
+                         alpha=d2v_alpha, min_alpha=d2v_min_alpha,  # initial learning rate; linearly drops to min_alpha as training progresses                   
+                         vector_size=vector_size,  # feature vector dim
+                         min_count=min_count, max_vocab_size=max_vocab_size,
+                         hs=0,  # 1: hierarchical softmax is used
+                         negative=5)  # use negative sampling - how many “noise words” should be drawn
     
     if d2v_model == "dm":
         model = model_dm   
